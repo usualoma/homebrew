@@ -11,6 +11,8 @@ class Vim < Formula
 
   env :std # To find interpreters
 
+  depends_on 'gtk+' => :build
+
   LANGUAGES         = %w(lua mzscheme perl python python3 tcl ruby)
   DEFAULT_LANGUAGES = %w(ruby python)
 
@@ -46,8 +48,8 @@ class Vim < Formula
     # when calling "make install".
     system "./configure", "--prefix=#{HOMEBREW_PREFIX}",
                           "--mandir=#{man}",
-                          "--enable-gui=no",
-                          "--without-x",
+                          "--enable-gui=gtk2",
+                          "--with-x",
                           "--enable-multibyte",
                           "--with-tlib=ncurses",
                           "--enable-cscope",
